@@ -7,6 +7,10 @@ language: php
 php:
   - 7.0
   - 5.6
+  
+addons:
+  hosts:
+    - localtest
     
 matrix:
   fast_finish: true
@@ -31,6 +35,7 @@ before_script:
 script:
 - curl http://127.0.0.1/test.php
 - curl http://localhost/test.php
+- curl http://localtest/test.php
 - curl http://127.0.0.1
 - curl http://localhost
 
