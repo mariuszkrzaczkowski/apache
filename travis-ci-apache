@@ -1,12 +1,13 @@
 <VirtualHost *:80>
   # [...]
-  ServerName localhost
-  DocumentRoot /home/travis/build/mariuszkrzaczkowski/apache
 
-  <Directory "/home/travis/build/mariuszkrzaczkowski/apache/">
+  DocumentRoot %TRAVIS_BUILD_DIR%
+
+  <Directory "%TRAVIS_BUILD_DIR%">
     Options FollowSymLinks MultiViews ExecCGI
     AllowOverride All
-	Require all granted
+    Order deny,allow
+    Allow from all
   </Directory>
 
   # Wire up Apache to use Travis CI's php-fpm.
