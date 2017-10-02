@@ -27,12 +27,15 @@ before_script:
 - sudo chmod -R 777 apache.sh
 - ./apache.sh
 
+script:
+- curl http://127.0.0.1/test.php
+- curl http://127.0.0.1
+- curl http://localhost/test.php
+- curl http://localhost
+
+
 after_script:
 - sudo cat /var/log/apache2/error.log
 - sudo cat /var/log/apache2/access.log
 - sudo cat /var/log/apache2/other_vhosts_access.log
 - ls -all /home/travis/build/mariuszkrzaczkowski/apache
-- curl http://127.0.0.1/test.php
-- curl http://127.0.0.1
-- curl http://localhost/test.php
-- curl http://localhost
