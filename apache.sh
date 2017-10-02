@@ -10,4 +10,6 @@ echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php
 sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/000-default
 sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/000-default
 sudo service apache2 restart
-sudo service php-fpm restart
+sudo /etc/init.d/php-fpm restart    # typical
+sudo /etc/init.d/php5-fpm restart   # debian-style
+sudo /etc/init.d/php7.0-fpm restart # debian-style PHP 7
