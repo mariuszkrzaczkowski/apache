@@ -11,6 +11,4 @@ sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/000-default
 sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/000-default
 sudo service apache2 restart
 
-~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm restart
-
 ls -all /etc/init.d/
