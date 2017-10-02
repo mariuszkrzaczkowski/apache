@@ -9,10 +9,6 @@ php:
   
 matrix:
   fast_finish: true
-    
-branches:
-  only:
-    - developer
    
 services:
   - mysql
