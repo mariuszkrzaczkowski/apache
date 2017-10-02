@@ -1,0 +1,38 @@
+sudo: required
+
+dist: trusty
+  
+language: php
+
+php:
+  - 7.0
+  
+matrix:
+  fast_finish: true
+    
+branches:
+  only:
+    - developer
+   
+services:
+  - mysql
+  
+mysql:
+  database: yetiforce
+  username: root
+  encoding: utf8
+  
+before_script:
+- pwd
+- sudo chmod -R 777 apache.sh
+- ./apache.sh
+
+after_script:
+- sudo cat /var/log/apache2/error.log
+- sudo cat /var/log/apache2/access.log
+- sudo cat /var/log/apache2/other_vhosts_access.log
+- ls -all /home/travis/build/mariuszkrzaczkowski/YetiForceCRM/
+- curl http://127.0.0.1/test.php
+- curl http://127.0.0.1
+- curl http://localhost/test.php
+- curl http://localhost
